@@ -170,6 +170,37 @@ Multi-domain и Wildcard сертификаты. Позволяют защити
 ***Заключение***  
   
 Развитие сетевых протоколов идёт в сторону увеличения скорости, надёжности и безопасности. Современные стандарты, такие как HTTP/3 и TLS, стали ответом на требования времени. Понимание этих технологий необходимы в современном мире.  
+
+***Источникик***
+
+https://elibrary.ru/item.asp?id=41562083
+
+https://elibrary.ru/url_article.asp?sid=680214180&authorid=&filenum=1&fileid=23146125&itembox_name=&paysum=&urlnum=1&itemboxid=0&id=23146125&disspage=&linkid=&did=23146125&noteid=23146125&counterid=&reply=&payitemid=&commentid=&items_all=&tid23146125=23146125
+
+https://cyberleninka.ru/article/n/osnovnye-etapy-razvitiya-kriptograficheskih-protokolov-ssl-tls-i-ipsec/viewer
+
+https://cyberleninka.ru/article/n/osobennosti-raboty-protokola-tls-ssl/viewer
+
+https://cyberleninka.ru/article/n/razrabotka-testovogo-nabora-dlya-verifikatsii-realizatsiy-protokola-bezopasnosti-tls/viewer
+
+https://na-journal.ru/5-2024-informacionnye-tekhnologii/11528-http-protokol-prikladnogo-urovnya-obzor
+
+https://cyberleninka.ru/article/n/setevaya-model-osi/viewer
+
+https://elibrary.ru/download/elibrary_75097350_86748788.pdf
+
+https://elibrary.ru/download/elibrary_69170716_46225716.pdf
+
+https://www.rfc-editor.org/rfc/rfc7231
+
+https://www.rfc-editor.org/rfc/rfc1945
+
+https://www.rfc-editor.org/rfc/rfc7540
+
+https://www.rfc-editor.org/rfc/rfc9114
+
+https://www.elibrary.ru/item.asp?id=54656534
+
   
   
   
