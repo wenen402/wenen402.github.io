@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTTP/S Протоколы | Сетевые технологии</title>
+    <title>HTTP/S Протоколы | Полное исследование</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -39,7 +39,7 @@
         /* Заголовок */
         .hero {
             text-align: center;
-            padding: 5rem 0 4rem;
+            padding: 5rem 0 3rem;
             position: relative;
         }
         
@@ -65,10 +65,18 @@
             color: var(--gray);
             font-weight: 400;
             max-width: 800px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2rem;
         }
         
-        /* Навигация по разделам */
+        .hero-description {
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Навигация */
         .nav-tabs {
             display: flex;
             justify-content: center;
@@ -77,6 +85,13 @@
             margin: 3rem 0 4rem;
             border-bottom: 2px solid var(--border);
             padding-bottom: 1rem;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+            padding: 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
         
         .tab {
@@ -90,6 +105,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .tab:hover {
@@ -139,6 +157,19 @@
             border-radius: 10px;
         }
         
+        /* Подразделы */
+        .subsection {
+            margin: 3rem 0;
+        }
+        
+        .subsection-title {
+            font-size: 1.6rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+        
         /* Модель OSI */
         .osi-model {
             display: flex;
@@ -157,16 +188,18 @@
             background: white;
             border: 2px solid var(--border);
             border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
             position: relative;
             transition: all 0.3s ease;
             counter-increment: layer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
         
         .osi-layer:hover {
             border-color: var(--primary);
             transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.1);
         }
         
         .osi-layer::before {
@@ -174,18 +207,37 @@
             font-weight: 700;
             color: var(--primary);
             margin-right: 0.5rem;
+            font-size: 1.2rem;
         }
         
         .layer-title {
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             color: var(--dark);
+            font-size: 1.2rem;
         }
         
         .layer-desc {
             color: var(--gray);
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        
+        .protocol-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .protocol-tag {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
         }
         
         /* Таблицы */
@@ -194,6 +246,7 @@
             margin: 2rem 0;
             border-radius: var(--radius);
             border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
         
         .comparison-table {
@@ -208,11 +261,14 @@
             font-weight: 600;
             text-align: left;
             padding: 1.2rem 1.5rem;
+            position: sticky;
+            top: 0;
         }
         
         .comparison-table td {
             padding: 1.2rem 1.5rem;
             border-bottom: 1px solid var(--border);
+            vertical-align: top;
         }
         
         .comparison-table tr:nth-child(even) {
@@ -223,7 +279,7 @@
             background: rgba(37, 99, 235, 0.05);
         }
         
-        /* Диаграммы */
+        /* Диаграммы и схемы */
         .diagram {
             background: var(--light);
             border-radius: var(--radius);
@@ -238,6 +294,10 @@
             margin-bottom: 2rem;
             color: var(--dark);
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
         }
         
         .protocol-flow {
@@ -252,17 +312,39 @@
         
         .client, .server {
             flex: 1;
-            min-width: 150px;
+            min-width: 180px;
             text-align: center;
             padding: 1.5rem;
             background: white;
             border-radius: var(--radius);
             border: 2px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
         
         .client h3, .server h3 {
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .flow-step {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: left;
+            position: relative;
+        }
+        
+        .flow-step::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 50%;
+            width: 1rem;
+            height: 2px;
+            background: var(--primary);
         }
         
         .flow-arrow {
@@ -282,37 +364,49 @@
             font-size: 1.2rem;
         }
         
-        /* Списки протоколов */
-        .protocol-list {
+        /* TCP/UDP сравнение */
+        .tcp-udp-comparison {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
         
-        .protocol-item {
+        .protocol-card {
             background: white;
             border-radius: var(--radius);
-            padding: 1.8rem;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
+            padding: 2.5rem;
+            border: 2px solid var(--border);
+            box-shadow: var(--shadow);
         }
         
-        .protocol-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary);
+        .protocol-card.tcp {
+            border-top: 4px solid var(--primary);
+        }
+        
+        .protocol-card.udp {
+            border-top: 4px solid var(--accent);
+        }
+        
+        .protocol-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
         
         .protocol-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--primary);
-            margin-bottom: 1rem;
+        }
+        
+        .protocol-card.udp .protocol-icon {
+            color: var(--accent);
         }
         
         .protocol-name {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--dark);
         }
         
@@ -333,12 +427,134 @@
             font-size: 0.9rem;
             text-align: center;
             border: 1px solid rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .method-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
         }
         
         .method-tag.get { background: rgba(34, 197, 94, 0.1); color: #16a34a; border-color: rgba(34, 197, 94, 0.3); }
         .method-tag.post { background: rgba(245, 158, 11, 0.1); color: #d97706; border-color: rgba(245, 158, 11, 0.3); }
         .method-tag.put { background: rgba(59, 130, 246, 0.1); color: #2563eb; border-color: rgba(59, 130, 246, 0.3); }
         .method-tag.delete { background: rgba(239, 68, 68, 0.1); color: #dc2626; border-color: rgba(239, 68, 68, 0.3); }
+        
+        /* Код и примеры */
+        .code-block {
+            background: var(--code-bg);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .code-header {
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .keyword { color: #f472b6; }
+        .function { color: #60a5fa; }
+        .string { color: #34d399; }
+        .comment { color: #64748b; }
+        .number { color: #f59e0b; }
+        .type { color: #c084fc; }
+        
+        /* Сертификаты SSL */
+        .certificate-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .certificate-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+        }
+        
+        .certificate-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .certificate-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .certificate-card.dv .certificate-icon { background: #10b981; }
+        .certificate-card.ov .certificate-icon { background: #3b82f6; }
+        .certificate-card.ev .certificate-icon { background: #8b5cf6; }
+        
+        /* Версии HTTP */
+        .http-versions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+        
+        .version-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .version-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .version-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .version-year {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
         
         /* Футер */
         .footer {
@@ -354,17 +570,21 @@
             justify-content: center;
             gap: 2rem;
             margin: 2rem 0;
+            flex-wrap: wrap;
         }
         
         .footer-link {
             color: var(--primary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
         }
         
         .footer-link:hover {
             color: var(--primary-dark);
-            text-decoration: underline;
+            background: rgba(37, 99, 235, 0.1);
+            text-decoration: none;
         }
         
         /* Адаптивность */
@@ -377,12 +597,15 @@
             .osi-model { flex-direction: column; }
             .protocol-flow { flex-direction: column; }
             .flow-arrow { transform: rotate(90deg); margin: 1rem 0; }
+            .nav-tabs { position: static; }
+            .tab { padding: 0.6rem 1rem; font-size: 0.9rem; }
         }
         
         @media (max-width: 480px) {
             .hero-title { font-size: 2rem; }
             .nav-tabs { gap: 0.5rem; }
-            .tab { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+            .certificate-types { grid-template-columns: 1fr; }
+            .tcp-udp-comparison { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -394,109 +617,200 @@
             </div>
             <h1 class="hero-title">HTTP/S Протоколы</h1>
             <p class="hero-subtitle">
-                Исследование сетевых протоколов, моделей OSI/TCP-IP и эволюции от HTTP до HTTPS
+                Полное исследование сетевых протоколов и моделей взаимодействия
+            </p>
+            <p class="hero-description">
+                Этот проект посвящён ключевым сетевым протоколам и моделям, которые лежат в основе современного интернета. 
+                Рассматриваются архитектурные принципы взаимодействия систем, начиная с теоретической модели OSI, 
+                переходя к практическим протоколам TCP/IP и завершая детальным разбором HTTP и его защищённой версии HTTPS.
             </p>
         </header>
         
         <div class="nav-tabs">
-            <button class="tab active" data-target="osi">Модель OSI</button>
-            <button class="tab" data-target="tcp-ip">TCP/IP</button>
-            <button class="tab" data-target="http">HTTP</button>
-            <button class="tab" data-target="https">HTTPS</button>
-            <button class="tab" data-target="quic">HTTP/3 & QUIC</button>
+            <button class="tab active" data-target="osi"><i class="fas fa-layer-group"></i> Модель OSI</button>
+            <button class="tab" data-target="tcp-udp"><i class="fas fa-exchange-alt"></i> TCP/UDP</button>
+            <button class="tab" data-target="http"><i class="fas fa-globe"></i> HTTP</button>
+            <button class="tab" data-target="http-versions"><i class="fas fa-history"></i> Версии HTTP</button>
+            <button class="tab" data-target="https"><i class="fas fa-lock"></i> HTTPS</button>
+            <button class="tab" data-target="quic"><i class="fas fa-bolt"></i> HTTP/3 & QUIC</button>
         </div>
         
         <!-- Модель OSI -->
         <section id="osi" class="content-section visible">
             <h2 class="section-title"><i class="fas fa-layer-group"></i> Сетевая модель OSI</h2>
-            <p>Модель OSI (Open Systems Interconnection) — концептуальная модель, характеризующая и стандартизирующая коммуникационные функции телекоммуникационной системы без зависимости от её внутренней структуры и технологий.</p>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Обзор модели</h3>
+                <p>Модель OSI (Open Systems Interconnection model) — базовая эталонная модель взаимодействия открытых систем, представляющая собой концептуальную модель, которая характеризует и стандартизирует коммуникационные функции телекоммуникационной или вычислительной системы независимо от их внутренней структуры и технологии.</p>
+                <p>Цель модели — обеспечение совместимости различных систем связи со стандартными протоколами. Модель состоит из семи уровней, каждый из которых использует только функции нижнего уровня и предоставляет свои функции только верхнему уровню.</p>
+            </div>
             
             <div class="osi-model">
                 <div class="osi-stack">
-                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">7 уровней модели OSI</h3>
                     <div class="osi-layer">
-                        <div class="layer-title">Прикладной (Application)</div>
-                        <div class="layer-desc">HTTP, HTTPS, SMTP, DNS, FTP. Взаимодействие с приложениями.</div>
+                        <div class="layer-title">Прикладной уровень (Application Layer)</div>
+                        <div class="layer-desc">Слой OSI ближайший к пользователю. Пользователи взаимодействуют непосредственно с программным приложением.</div>
+                        <div class="layer-desc">Функции включают идентификацию коммуникационных партнеров, определение доступности ресурсов и синхронизацию связи.</div>
+                        <div class="protocol-list">
+                            <span class="protocol-tag">HTTP</span>
+                            <span class="protocol-tag">HTTPS</span>
+                            <span class="protocol-tag">SMTP</span>
+                            <span class="protocol-tag">DNS</span>
+                            <span class="protocol-tag">FTP</span>
+                        </div>
                     </div>
+                    
                     <div class="osi-layer">
-                        <div class="layer-title">Представления (Presentation)</div>
-                        <div class="layer-desc">MIME, XDR, ASN.1. Кодирование, шифрование, сжатие данных.</div>
+                        <div class="layer-title">Уровень представления (Presentation Layer)</div>
+                        <div class="layer-desc">Преобразует протоколы и обеспечивает кодирование-декодирование данных.</div>
+                        <div class="layer-desc">Запросы приложений преобразуются в формат для передачи по сети, а полученные из сети данные преобразуются в формат приложений.</div>
+                        <div class="protocol-list">
+                            <span class="protocol-tag">MIME</span>
+                            <span class="protocol-tag">XDR</span>
+                            <span class="protocol-tag">ASN.1</span>
+                            <span class="protocol-tag">SSL</span>
+                            <span class="protocol-tag">TLS</span>
+                        </div>
                     </div>
+                    
                     <div class="osi-layer">
-                        <div class="layer-title">Сеансовый (Session)</div>
-                        <div class="layer-desc">NetBIOS, RPC, SIP. Управление сеансами связи.</div>
+                        <div class="layer-title">Сеансовый уровень (Session Layer)</div>
+                        <div class="layer-desc">Обеспечивает поддержание сеанса связи. Устанавливает, управляет и завершает соединения между локальными или удаленными приложениями.</div>
+                        <div class="layer-desc">Обеспечивает полный дуплекс, полу-дуплекс или симплекс операции.</div>
+                        <div class="protocol-list">
+                            <span class="protocol-tag">NetBIOS</span>
+                            <span class="protocol-tag">RPC</span>
+                            <span class="protocol-tag">SIP</span>
+                        </div>
                     </div>
+                    
                     <div class="osi-layer">
-                        <div class="layer-title">Транспортный (Transport)</div>
-                        <div class="layer-desc">TCP, UDP. Надёжная передача данных, управление потоком.</div>
-                    </div>
-                    <div class="osi-layer">
-                        <div class="layer-title">Сетевой (Network)</div>
-                        <div class="layer-desc">IPv4, IPv6, ICMP, ARP. Маршрутизация и логическая адресация.</div>
-                    </div>
-                    <div class="osi-layer">
-                        <div class="layer-title">Канальный (Data Link)</div>
-                        <div class="layer-desc">Ethernet, PPP, HDLC. Обнаружение ошибок, управление доступом.</div>
-                    </div>
-                    <div class="osi-layer">
-                        <div class="layer-title">Физический (Physical)</div>
-                        <div class="layer-desc">IEEE 802.15 (Bluetooth), RS-232, Wi-Fi. Передача битов по среде.</div>
+                        <div class="layer-title">Транспортный уровень (Transport Layer)</div>
+                        <div class="layer-desc">Обеспечивает надёжную передачу информации от отправителя к получателю через одну или несколько сетей, сохраняя качество сервисных функций.</div>
+                        <div class="layer-desc">Контролирует надежность линии связи с управлением потоком, сегментацией и контролем ошибок.</div>
+                        <div class="protocol-list">
+                            <span class="protocol-tag">TCP</span>
+                            <span class="protocol-tag">UDP</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="osi-stack">
-                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Стек протоколов TCP/IP</h3>
                     <div class="osi-layer">
-                        <div class="layer-title">Прикладной</div>
-                        <div class="layer-desc">HTTP, SMTP, DNS, FTP, POP3, IMAP</div>
+                        <div class="layer-title">Сетевой уровень (Network Layer)</div>
+                        <div class="layer-desc">Обеспечивает функциональные и процедурные средства передачи блока информации (датаграммы) от одного узла к другому в той же сети.</div>
+                        <div class="layer-desc">Определяет адресацию узлов и маршрутизацию пакетов по сети.</div>
+                        <div class="protocol-list">
+                            <span class="protocol-tag">IPv4</span>
+                            <span class="protocol-tag">IPv6</span>
+                            <span class="protocol-tag">ICMP</span>
+                            <span class="protocol-tag">ARP</span>
+                        </div>
                     </div>
+                    
                     <div class="osi-layer">
-                        <div class="layer-title">Транспортный</div>
-                        <div class="layer-desc">TCP, UDP</div>
+                        <div class="layer-title">Канальный уровень (Data Link Layer)</div>
+                        <div class="layer-desc">Обеспечивает связь между двумя напрямую соединенными узлами (node-to-node data transfer).</div>
+                        <div class="layer-desc">Предназначен для обнаружения и исправления ошибок, которые могут возникнуть на физическом уровне.</div>
+                        <div class="protocol-list">
+                            <span class="protocol-tag">Ethernet</span>
+                            <span class="protocol-tag">PPP</span>
+                            <span class="protocol-tag">HDLC</span>
+                        </div>
                     </div>
+                    
                     <div class="osi-layer">
-                        <div class="layer-title">Интернет (Сетевой)</div>
-                        <div class="layer-desc">IPv4, IPv6, ARP, ICMP, IGMP, BGP, OSPF, RIP</div>
+                        <div class="layer-title">Физический уровень (Physical Layer)</div>
+                        <div class="layer-desc">Самый нижний уровень, определяет электрические и физические характеристики соединения данных.</div>
+                        <div class="layer-desc">Отвечает за передачу и прием неструктурированных необработанных данных на физической среде.</div>
+                        <div class="protocol-list">
+                            <span class="protocol-tag">IEEE 802.15</span>
+                            <span class="protocol-tag">RS-232</span>
+                            <span class="protocol-tag">Wi-Fi</span>
+                            <span class="protocol-tag">Bluetooth</span>
+                        </div>
                     </div>
+                    
                     <div class="osi-layer">
-                        <div class="layer-title">Сетевых интерфейсов</div>
-                        <div class="layer-desc">Ethernet, Wi-Fi, Bluetooth, DSL</div>
+                        <div class="layer-title">Модель TCP/IP</div>
+                        <div class="layer-desc">Практическая реализация сетевого взаимодействия, используемая в интернете.</div>
+                        <div class="layer-desc">Состоит из 4 уровней: Прикладной, Транспортный, Интернет (Сетевой), Сетевых интерфейсов.</div>
+                        <div class="protocol-list">
+                            <span class="protocol-tag">HTTP/SMTP/DNS</span>
+                            <span class="protocol-tag">TCP/UDP</span>
+                            <span class="protocol-tag">IP/ICMP</span>
+                            <span class="protocol-tag">Ethernet/Wi-Fi</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- TCP/IP -->
-        <section id="tcp-ip" class="content-section">
+        <!-- TCP/UDP -->
+        <section id="tcp-udp" class="content-section">
             <h2 class="section-title"><i class="fas fa-exchange-alt"></i> Транспортные протоколы TCP и UDP</h2>
+            
+            <div class="tcp-udp-comparison">
+                <div class="protocol-card tcp">
+                    <div class="protocol-header">
+                        <div class="protocol-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="protocol-name">TCP</div>
+                    </div>
+                    <p><strong>Transmission Control Protocol</strong> — основной протокол передачи данных, обеспечивающий надежную и упорядоченную доставку данных между устройствами.</p>
+                    <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--gray);">
+                        <li>Работает на основе установления соединений (Three-Way Handshake)</li>
+                        <li>Обеспечивает надежную доставку данных</li>
+                        <li>Управляет потоком информации и подтверждает прием данных</li>
+                        <li>Автоматическая переотправка потерянных пакетов</li>
+                        <li>Механизмы контроля потока и перегрузки</li>
+                    </ul>
+                    <p>Используется для веб-страниц, электронной почты, передачи файлов (FTP) — там, где важна надежность.</p>
+                </div>
+                
+                <div class="protocol-card udp">
+                    <div class="protocol-header">
+                        <div class="protocol-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="protocol-name">UDP</div>
+                    </div>
+                    <p><strong>User Datagram Protocol</strong> — очень простая абстракция базовой IP-датаграммы. Является ненадежным средством передачи.</p>
+                    <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--gray);">
+                        <li>Ненадежная доставка без подтверждений</li>
+                        <li>Без установления соединения</li>
+                        <li>Пакеты могут теряться, дублироваться, менять порядок</li>
+                        <li>Нет управления потоком данных</li>
+                        <li>Минимальные накладные расходы (заголовок 8 байт)</li>
+                    </ul>
+                    <p>Используется для DNS запросов, VoIP, онлайн-игр, потокового видео — там, где важна скорость и малая задержка.</p>
+                </div>
+            </div>
             
             <div class="table-container">
                 <table class="comparison-table">
                     <thead>
                         <tr>
-                            <th>Параметр</th>
-                            <th>TCP (Transmission Control Protocol)</th>
-                            <th>UDP (User Datagram Protocol)</th>
+                            <th>Характеристика</th>
+                            <th>TCP</th>
+                            <th>UDP</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>Надёжность</strong></td>
-                            <td>Надёжная доставка с подтверждениями</td>
-                            <td>Ненадёжная, без подтверждений</td>
+                            <td>Надёжная доставка с подтверждениями и повторной передачей</td>
+                            <td>Ненадёжная, без гарантий доставки</td>
                         </tr>
                         <tr>
-                            <td><strong>Соединение</strong></td>
-                            <td>Установление соединения (3-way handshake)</td>
-                            <td>Без установления соединения</td>
+                            <td><strong>Установление соединения</strong></td>
+                            <td>Требуется (Three-Way Handshake)</td>
+                            <td>Не требуется</td>
                         </tr>
                         <tr>
                             <td><strong>Упорядочивание</strong></td>
                             <td>Гарантированный порядок пакетов</td>
-                            <td>Без гарантии порядка</td>
+                            <td>Нет гарантии порядка</td>
                         </tr>
                         <tr>
-                            <td><strong>Контроль потока</strong></td>
+                            <td><strong>Контроль перегрузки</strong></td>
                             <td>Есть (механизмы congestion control)</td>
                             <td>Нет</td>
                         </tr>
@@ -506,8 +820,13 @@
                             <td>8 байт (минимальные накладные)</td>
                         </tr>
                         <tr>
+                            <td><strong>Скорость</strong></td>
+                            <td>Медленнее из-за накладных расходов</td>
+                            <td>Быстрее, минимальная задержка</td>
+                        </tr>
+                        <tr>
                             <td><strong>Использование</strong></td>
-                            <td>Веб, email, FTP (требуется надёжность)</td>
+                            <td>Веб (HTTP/HTTPS), email (SMTP), FTP</td>
                             <td>DNS, VoIP, игры, потоковое видео</td>
                         </tr>
                     </tbody>
@@ -515,17 +834,17 @@
             </div>
             
             <div class="diagram">
-                <div class="diagram-title">Установление TCP соединения (Three-Way Handshake)</div>
+                <div class="diagram-title"><i class="fas fa-handshake"></i> TCP Three-Way Handshake</div>
                 <div class="protocol-flow">
                     <div class="client">
                         <h3>Клиент</h3>
-                        <div style="margin: 1rem 0; padding: 0.8rem; background: rgba(37, 99, 235, 0.1); border-radius: 6px;">
-                            TCP (SYN)
-                            <div style="font-size: 0.8rem; color: var(--gray);">Инициализация</div>
+                        <div class="flow-step">
+                            <strong>TCP (SYN)</strong><br>
+                            <small>Инициализация соединения</small>
                         </div>
-                        <div style="margin: 1rem 0; padding: 0.8rem; background: rgba(37, 99, 235, 0.1); border-radius: 6px;">
-                            TCP (ACK)
-                            <div style="font-size: 0.8rem; color: var(--gray);">Подтверждение</div>
+                        <div class="flow-step">
+                            <strong>TCP (ACK)</strong><br>
+                            <small>Подтверждение соединения</small>
                         </div>
                     </div>
                     
@@ -533,9 +852,9 @@
                     
                     <div class="server">
                         <h3>Сервер</h3>
-                        <div style="margin: 1rem 0; padding: 0.8rem; background: rgba(245, 158, 11, 0.1); border-radius: 6px;">
-                            TCP (SYN-ACK)
-                            <div style="font-size: 0.8rem; color: var(--gray);">Готовность</div>
+                        <div class="flow-step">
+                            <strong>TCP (SYN-ACK)</strong><br>
+                            <small>Готовность к соединению</small>
                         </div>
                     </div>
                 </div>
@@ -545,103 +864,424 @@
         <!-- HTTP -->
         <section id="http" class="content-section">
             <h2 class="section-title"><i class="fas fa-globe"></i> Протокол HTTP</h2>
-            <p>HTTP (Hypertext Transfer Protocol) — протокол передачи гипертекстовых документов по схеме «запрос-ответ». Используется для обмена данными в веб.</p>
             
-            <h3 style="margin: 2rem 0 1rem; color: var(--dark);">Структура URL</h3>
-            <div style="background: var(--code-bg); color: white; padding: 1.5rem; border-radius: var(--radius); font-family: 'JetBrains Mono', monospace; margin: 1.5rem 0;">
-                <span style="color: #60a5fa;">http</span>://<span style="color: #34d399;">www.asozykin.ru</span>/<span style="color: #fbbf24;">courses/networks</span>
-                <div style="margin-top: 0.8rem; display: flex; justify-content: space-between; color: #94a3b8; font-size: 0.9rem;">
-                    <span>Протокол</span>
-                    <span>Адрес сервера</span>
-                    <span>Страница</span>
+            <div class="subsection">
+                <h3 class="subsection-title">Основные понятия</h3>
+                <p><strong>HTTP (Hypertext Transfer Protocol)</strong> — протокол передачи гипертекстовых документов, т.е. документов, содержащих ссылки на другие документы. Этот протокол предполагает использование передачи между клиентом и сервером.</p>
+                <p>Клиент посылает запрос на сервер, последний его обрабатывает и отправляет ответ, содержащий какую-то информацию. Полученный документ может состоять из нескольких файлов.</p>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Структура URL</h3>
+                <div style="background: var(--code-bg); color: white; padding: 1.5rem; border-radius: var(--radius); font-family: 'JetBrains Mono', monospace; margin: 1.5rem 0;">
+                    <span class="keyword">http</span>://<span class="string">www.asozykin.ru</span>/<span class="function">courses/networks</span>
+                    <div style="margin-top: 0.8rem; display: flex; justify-content: space-between; color: #94a3b8; font-size: 0.9rem;">
+                        <span>Протокол</span>
+                        <span>Адрес сервера</span>
+                        <span>Страница</span>
+                    </div>
+                </div>
+                <p><strong>Uniform Resource Locator (URL)</strong> — единообразный определитель местонахождения ресурса. URL состоит из трех основных частей:</p>
+                <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--gray);">
+                    <li><strong>Название протокола</strong> (например, HTTP, HTTPS)</li>
+                    <li><strong>Адрес сервера</strong> — IP-адрес или доменное имя</li>
+                    <li><strong>Адрес ресурса на сервере</strong> — путь к HTML-странице, изображению, видео</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Методы HTTP</h3>
+                <p>Метод HTTP говорит о том, какое действие с ресурсом мы хотим совершить. Основные методы определены в RFC 9110:</p>
+                
+                <div class="methods-grid">
+                    <div class="method-tag get">GET</div>
+                    <div class="method-tag post">POST</div>
+                    <div class="method-tag put">PUT</div>
+                    <div class="method-tag delete">DELETE</div>
+                    <div class="method-tag">HEAD</div>
+                    <div class="method-tag">OPTIONS</div>
+                    <div class="method-tag">CONNECT</div>
+                    <div class="method-tag">TRACE</div>
+                    <div class="method-tag">PATCH</div>
+                </div>
+                
+                <div class="table-container" style="margin-top: 2rem;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Метод</th>
+                                <th>Описание</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>GET</strong></td>
+                                <td>Запрос на передачу ресурса</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HEAD</strong></td>
+                                <td>Запрос на передачу ресурса, но сам ресурс в ответе не передается, только заголовки</td>
+                            </tr>
+                            <tr>
+                                <td><strong>POST</strong></td>
+                                <td>Передача данных на сервер для обработки указанного ресурса</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PUT</strong></td>
+                                <td>Размещение ресурса на сервере (если такой ресурс уже есть на сервере, то он замещается)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DELETE</strong></td>
+                                <td>Удаление ресурса на сервере</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CONNECT</strong></td>
+                                <td>Установка соединения с сервером на основе ресурса</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OPTIONS</strong></td>
+                                <td>Запрос поддерживаемых методов HTTP для ресурса</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TRACE</strong></td>
+                                <td>Запрос на трассировку сообщения: сервер включает в ответ исходный запрос</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             
-            <h3 style="margin: 2rem 0 1rem; color: var(--dark);">Методы HTTP</h3>
-            <div class="methods-grid">
-                <div class="method-tag get">GET</div>
-                <div class="method-tag post">POST</div>
-                <div class="method-tag put">PUT</div>
-                <div class="method-tag delete">DELETE</div>
-                <div class="method-tag">HEAD</div>
-                <div class="method-tag">OPTIONS</div>
-                <div class="method-tag">CONNECT</div>
-                <div class="method-tag">TRACE</div>
-            </div>
-            
-            <h3 style="margin: 2rem 0 1rem; color: var(--dark);">Пример HTTP-ответа</h3>
-            <div style="background: var(--code-bg); color: #e2e8f0; padding: 1.5rem; border-radius: var(--radius); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6; overflow-x: auto;">
-                HTTP/1.1 <span style="color: #34d399;">200 OK</span><br>
-                Connection: <span style="color: #60a5fa;">keep-alive</span><br>
-                Content-Length: <span style="color: #f59e0b;">237</span><br>
-                Server: <span style="color: #60a5fa;">GitHub.com</span><br>
-                Content-Type: <span style="color: #60a5fa;">text/html; charset=utf-8</span><br>
-                Last-Modified: <span style="color: #f59e0b;">Sat, 15 Oct 2022 17:47:01 GMT</span><br>
-                Cache-Control: <span style="color: #60a5fa;">max-age=600</span><br>
-                X-Cache: <span style="color: #34d399;">HIT</span>
+            <div class="subsection">
+                <h3 class="subsection-title">Пример HTTP запроса/ответа</h3>
+                <div class="code-block">
+                    <div class="code-header">HTTP запрос (клиент → сервер)</div>
+                    <span class="keyword">GET</span> <span class="string">/</span> <span class="keyword">HTTP/1.1</span><br>
+                    <span class="type">Host</span>: <span class="string">networkscourse.ru</span><br>
+                    <span class="type">User-Agent</span>: <span class="string">Mozilla/5.0</span><br>
+                    <span class="type">Accept</span>: <span class="string">text/html,application/xhtml+xml</span><br>
+                    <span class="type">Connection</span>: <span class="string">keep-alive</span>
+                </div>
+                
+                <div class="code-block">
+                    <div class="code-header">HTTP ответ (сервер → клиент)</div>
+                    <span class="keyword">HTTP/1.1</span> <span class="number">200</span> <span class="string">OK</span><br>
+                    <span class="type">Connection</span>: <span class="string">keep-alive</span><br>
+                    <span class="type">Content-Length</span>: <span class="number">237</span><br>
+                    <span class="type">Server</span>: <span class="string">GitHub.com</span><br>
+                    <span class="type">Content-Type</span>: <span class="string">text/html; charset=utf-8</span><br>
+                    <span class="type">Last-Modified</span>: <span class="string">Sat, 15 Oct 2022 17:47:01 GMT</span><br>
+                    <span class="type">Access-Control-Allow-Origin</span>: <span class="string">*</span><br>
+                    <span class="type">Cache-Control</span>: <span class="string">max-age=600</span><br>
+                    <span class="type">X-Cache</span>: <span class="string">HIT</span><br>
+                    <span class="type">X-GitHub-Request-Id</span>: <span class="string">C848:3634AF:B56066:BA3EF8:663DE01A</span><br>
+                    <span class="comment">// ... остальные заголовки</span>
+                </div>
             </div>
         </section>
         
-        <!-- HTTPS -->
-        <section id="https" class="content-section">
-            <h2 class="section-title"><i class="fas fa-lock"></i> Защищённый HTTPS</h2>
-            <p>HTTPS (HyperText Transfer Protocol Secure) — расширение HTTP с поддержкой шифрования через SSL/TLS для защиты передаваемых данных.</p>
+        <!-- Версии HTTP -->
+        <section id="http-versions" class="content-section">
+            <h2 class="section-title"><i class="fas fa-history"></i> Эволюция HTTP протоколов</h2>
+            
+            <div class="http-versions">
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-name">HTTP/0.9</div>
+                        <div class="version-year">1991</div>
+                    </div>
+                    <p>Первая экспериментальная версия протокола, разработанная в ЦЕРН. Очень простая:</p>
+                    <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--gray);">
+                        <li>Только метод GET</li>
+                        <li>Только HTML-ответы</li>
+                        <li>Одно соединение (после передачи сразу закрывалось)</li>
+                        <li>Около 18 рукопожатий для полного обмена</li>
+                        <li>Нет заголовков</li>
+                    </ul>
+                </div>
+                
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-name">HTTP/1.0</div>
+                        <div class="version-year">1996</div>
+                    </div>
+                    <p>Первая открытая версия (RFC 1945). Существенные улучшения:</p>
+                    <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--gray);">
+                        <li>Добавлены методы GET, POST, HEAD</li>
+                        <li>Появились HTTP заголовки</li>
+                        <li>Поддержка разных типов контента (HTML, изображения, видео)</li>
+                        <li>Одно соединение с ожиданием ответа</li>
+                        <li>От 4 до 18 рукопожатий</li>
+                    </ul>
+                </div>
+                
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-name">HTTP/1.1</div>
+                        <div class="version-year">1999</div>
+                    </div>
+                    <p>Основная версия, используемая сегодня (RFC 9112):</p>
+                    <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--gray);">
+                        <li>Постоянные соединения для нескольких запросов</li>
+                        <li>Все основные методы (GET, POST, PUT, DELETE и др.)</li>
+                        <li>Обязательный заголовок Host (различает домены на одном IP)</li>
+                        <li>Кэширование, потоковая передача, байтовые диапазоны</li>
+                        <li>Прокси-аутентификация, улучшенное сжатие</li>
+                        <li>От 2 до 18 рукопожатий</li>
+                    </ul>
+                </div>
+                
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-name">HTTP/2</div>
+                        <div class="version-year">2015</div>
+                    </div>
+                    <p>Значительное улучшение производительности:</p>
+                    <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--gray);">
+                        <li>Бинарный протокол вместо текстового</li>
+                        <li>Мультиплексирование (несколько запросов в одном соединении)</li>
+                        <li>Server Push (сервер может отправлять ресурсы до запроса)</li>
+                        <li>Приоритизация запросов</li>
+                        <li>Сжатие заголовков HPACK</li>
+                        <li>От 2 до 3 рукопожатий</li>
+                    </ul>
+                </div>
+                
+                <div class="version-card">
+                    <div class="version-header">
+                        <div class="version-name">HTTP/3</div>
+                        <div class="version-year">2020</div>
+                    </div>
+                    <p>Революционное изменение транспортного уровня:</p>
+                    <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--gray);">
+                        <li>Использует QUIC поверх UDP вместо TCP</li>
+                        <li>Встроенное шифрование (TLS 1.3 в протоколе)</li>
+                        <li>0-RTT для повторных соединений</li>
+                        <li>Улучшенное мультиплексирование без блокировки</li>
+                        <li>Лучшая работа при смене сети (Wi-Fi → 4G)</li>
+                        <li>Защита от атак и потерь пакетов</li>
+                    </ul>
+                </div>
+            </div>
             
             <div class="table-container">
                 <table class="comparison-table">
                     <thead>
                         <tr>
-                            <th>Параметры</th>
-                            <th>DV SSL (Подтверждённый домен)</th>
-                            <th>OV SSL (Подтверждённая организация)</th>
-                            <th>EV SSL (Расширенное подтверждение)</th>
+                            <th>Версия HTTP</th>
+                            <th>Год</th>
+                            <th>Соединение</th>
+                            <th>Время установления</th>
+                            <th>Заголовок</th>
+                            <th>Ключевые особенности</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Протоколы</strong></td>
-                            <td>HTTPS</td>
-                            <td>HTTPS</td>
-                            <td>HTTPS + отображение организации в браузере</td>
+                            <td><strong>HTTP/0.9</strong></td>
+                            <td>1991</td>
+                            <td>Одно, сразу закрывается</td>
+                            <td>~18 рукопожатий</td>
+                            <td>Нет</td>
+                            <td>Только GET, HTML-ответы</td>
                         </tr>
                         <tr>
-                            <td><strong>Проверка</strong></td>
-                            <td>Только домен</td>
-                            <td>Домен + организация</td>
-                            <td>Полная юридическая проверка</td>
+                            <td><strong>HTTP/1.0</strong></td>
+                            <td>1996</td>
+                            <td>Одно, с ожиданием ответа</td>
+                            <td>4-18 рукопожатий</td>
+                            <td>Есть</td>
+                            <td>GET/POST/HEAD, разные типы контента</td>
                         </tr>
                         <tr>
-                            <td><strong>Поддомены</strong></td>
-                            <td>Разрешены любые (Wildcard)</td>
-                            <td>Только включённые в сертификат</td>
-                            <td>Только включённые в сертификат</td>
+                            <td><strong>HTTP/1.1</strong></td>
+                            <td>1999</td>
+                            <td>Постоянное для нескольких запросов</td>
+                            <td>2-18 рукопожатий</td>
+                            <td>Обязательный Host</td>
+                            <td>Кэширование, все методы, потоковая передача</td>
                         </tr>
                         <tr>
-                            <td><strong>Использование</strong></td>
-                            <td>Блоги, личные сайты</td>
-                            <td>Интернет-магазины, компании</td>
-                            <td>Банки, платежные системы</td>
+                            <td><strong>HTTP/2</strong></td>
+                            <td>2015</td>
+                            <td>Мультиплексированное</td>
+                            <td>2-3 рукопожатия</td>
+                            <td>Бинарный, сжатый</td>
+                            <td>Server Push, приоритизация, безопасность</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HTTP/3</strong></td>
+                            <td>2020</td>
+                            <td>QUIC поверх UDP</td>
+                            <td>0-1 RTT</td>
+                            <td>Бинарный</td>
+                            <td>Встроенное шифрование, устойчивость к смене сети</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             
             <div class="diagram">
-                <div class="diagram-title">Механизм работы HTTPS (SSL/TLS рукопожатие)</div>
+                <div class="diagram-title"><i class="fas fa-project-diagram"></i> Сравнение HTTP/1.1, HTTP/2 и HTTP/3</div>
+                <div class="protocol-flow">
+                    <div class="client">
+                        <h3>HTTP/1.1</h3>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>Последовательные запросы</strong><br>
+                            <small>Задержка из-за очереди</small>
+                        </div>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>Текстовые заголовки</strong><br>
+                            <small>Большой размер</small>
+                        </div>
+                    </div>
+                    
+                    <div class="flow-arrow"></div>
+                    
+                    <div class="client">
+                        <h3>HTTP/2</h3>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>Мультиплексирование</strong><br>
+                            <small>Параллельные потоки</small>
+                        </div>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>Бинарный протокол</strong><br>
+                            <small>Сжатые заголовки</small>
+                        </div>
+                    </div>
+                    
+                    <div class="flow-arrow"></div>
+                    
+                    <div class="client">
+                        <h3>HTTP/3</h3>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>QUIC поверх UDP</strong><br>
+                            <small>Нет блокировки</small>
+                        </div>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>0-RTT</strong><br>
+                            <small>Встроенное шифрование</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- HTTPS -->
+        <section id="https" class="content-section">
+            <h2 class="section-title"><i class="fas fa-lock"></i> Защищённый HTTPS</h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">История и принципы</h3>
+                <p><strong>HTTPS (HyperText Transfer Protocol Secure)</strong> — защищённый протокол передачи данных, расширение протокола HTTP. Его задача — защитить информацию, передаваемую между браузером и сервером, от перехвата и модификации третьими лицами.</p>
+                <p>HTTPS был создан компанией Netscape Communications в 1994 году для браузера Netscape Navigator. В 2000 году протокол был формально определён спецификацией RFC 2818.</p>
+                <p>Сегодня HTTPS стал стандартом: Google и Mozilla продвигают его использование, браузеры предупреждают о незашифрованных соединениях, а Let's Encrypt предоставляет бесплатные сертификаты.</p>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Принцип работы</h3>
+                <p>Для перехода на HTTPS необходимо получить и подключить SSL-сертификат — специальный файл, содержащий уникальные ключи шифрования. Сертификат позволяет браузеру убедиться, что сайт подлинный.</p>
+                <p>В HTTPS используется шифрование с длиной ключа 40, 56, 128 или 256 бит. Чем больше длина ключа, тем надежнее защищены данные. Ключи являются временными и периодически меняются.</p>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Типы SSL сертификатов</h3>
+                
+                <div class="certificate-types">
+                    <div class="certificate-card dv">
+                        <div class="certificate-header">
+                            <div class="certificate-icon"><i class="fas fa-globe"></i></div>
+                            <div>
+                                <h4>DV SSL</h4>
+                                <small>Domain Validation</small>
+                            </div>
+                        </div>
+                        <p><strong>Подтверждённый домен</strong> — самый простой тип сертификата. Верифицирует только домен.</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--gray); font-size: 0.9rem;">
+                            <li>Проверка: только домен</li>
+                            <li>Протоколы: HTTPS</li>
+                            <li>Поддомены: разрешены любые</li>
+                            <li>Использование: блоги, личные сайты</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="certificate-card ov">
+                        <div class="certificate-header">
+                            <div class="certificate-icon"><i class="fas fa-building"></i></div>
+                            <div>
+                                <h4>OV SSL</h4>
+                                <small>Organization Validation</small>
+                            </div>
+                        </div>
+                        <p><strong>Подтверждённая организация</strong> — подходит для среднего бизнеса (интернет-магазины, компании).</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--gray); font-size: 0.9rem;">
+                            <li>Проверка: домен + организация</li>
+                            <li>Протоколы: HTTPS + проверенный правообладатель</li>
+                            <li>Поддомены: только включённые в сертификат</li>
+                            <li>Использование: интернет-магазины, компании</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="certificate-card ev">
+                        <div class="certificate-header">
+                            <div class="certificate-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div>
+                                <h4>EV SSL</h4>
+                                <small>Extended Validation</small>
+                            </div>
+                        </div>
+                        <p><strong>Расширенное подтверждение</strong> — максимальный уровень доверия (банки, платежные системы).</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem; color: var(--gray); font-size: 0.9rem;">
+                            <li>Проверка: полная юридическая проверка</li>
+                            <li>Протоколы: HTTPS + отображение организации в браузере</li>
+                            <li>Поддомены: только включённые в сертификат</li>
+                            <li>Использование: банки, платежные системы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Криптографические протоколы SSL/TLS</h3>
+                
+                <div class="tcp-udp-comparison" style="margin-top: 2rem;">
+                    <div class="protocol-card" style="border-top-color: #10b981;">
+                        <div class="protocol-header">
+                            <div class="protocol-icon" style="color: #10b981;"><i class="fas fa-lock"></i></div>
+                            <div class="protocol-name">SSL</div>
+                        </div>
+                        <p><strong>Secure Sockets Layer</strong> — криптографический протокол, разработанный Netscape в 1995 году. Обеспечивает защищённое соединение между пользователем и веб-сервером.</p>
+                        <p>Рукопожатие SSL включает три сценария: установка нового соединения, возобновление соединения и аутентификация клиента.</p>
+                        <p>Сегодня прямая реализация SSL (SSL 2.0/3.0) не используется — её заменил более современный протокол TLS.</p>
+                    </div>
+                    
+                    <div class="protocol-card" style="border-top-color: #8b5cf6;">
+                        <div class="protocol-header">
+                            <div class="protocol-icon" style="color: #8b5cf6;"><i class="fas fa-lock"></i></div>
+                            <div class="protocol-name">TLS</div>
+                        </div>
+                        <p><strong>Transport Layer Security</strong> — современная версия SSL, разработанная на основе SSL 3.0.</p>
+                        <p>Состоит из двух уровней: протокола Записей TLS (TLS Record Protocol) и протокола Рукопожатия (TLS Handshake Protocol).</p>
+                        <p>Использует асимметричные алгоритмы для аутентификации и симметричные для сохранения конфиденциальности данных.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="diagram">
+                <div class="diagram-title"><i class="fas fa-handshake"></i> Процедура TLS рукопожатия</div>
                 <div class="protocol-flow">
                     <div class="client">
                         <h3>Клиент</h3>
-                        <div style="margin: 0.5rem 0; padding: 0.7rem; background: rgba(37, 99, 235, 0.1); border-radius: 6px; font-size: 0.9rem;">
-                            Client Hello<br>
-                            <span style="font-size: 0.8rem; color: var(--gray);">Поддерживаемые шифры</span>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>Client Hello</strong><br>
+                            <small>Поддерживаемые шифры, версия TLS</small>
                         </div>
-                        <div style="margin: 0.5rem 0; padding: 0.7rem; background: rgba(37, 99, 235, 0.1); border-radius: 6px; font-size: 0.9rem;">
-                            Проверка сертификата<br>
-                            <span style="font-size: 0.8rem; color: var(--gray);">Верификация ЦС</span>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>Проверка сертификата</strong><br>
+                            <small>Верификация через центр сертификации</small>
                         </div>
-                        <div style="margin: 0.5rem 0; padding: 0.7rem; background: rgba(37, 99, 235, 0.1); border-radius: 6px; font-size: 0.9rem;">
-                            Обмен ключами<br>
-                            <span style="font-size: 0.8rem; color: var(--gray);">Симметричное шифрование</span>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>Обмен ключами</strong><br>
+                            <small>Генерация симметричного ключа</small>
                         </div>
                     </div>
                     
@@ -649,13 +1289,17 @@
                     
                     <div class="server">
                         <h3>Сервер</h3>
-                        <div style="margin: 0.5rem 0; padding: 0.7rem; background: rgba(245, 158, 11, 0.1); border-radius: 6px; font-size: 0.9rem;">
-                            Server Hello<br>
-                            <span style="font-size: 0.8rem; color: var(--gray);">Сертификат + публичный ключ</span>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>Server Hello</strong><br>
+                            <small>Выбор шифра, отправка сертификата</small>
                         </div>
-                        <div style="margin: 0.5rem 0; padding: 0.7rem; background: rgba(245, 158, 11, 0.1); border-radius: 6px; font-size: 0.9rem;">
-                            Подтверждение<br>
-                            <span style="font-size: 0.8rem; color: var(--gray);">Готовность к шифрованию</span>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>Server Hello Done</strong><br>
+                            <small>Ожидание следующего шага клиента</small>
+                        </div>
+                        <div class="flow-step" style="font-size: 0.9rem;">
+                            <strong>Finished</strong><br>
+                            <small>Подтверждение установки соединения</small>
                         </div>
                     </div>
                 </div>
@@ -665,86 +1309,187 @@
         <!-- HTTP/3 & QUIC -->
         <section id="quic" class="content-section">
             <h2 class="section-title"><i class="fas fa-bolt"></i> HTTP/3 и протокол QUIC</h2>
-            <p>HTTP/3 использует транспортный протокол QUIC поверх UDP для уменьшения задержек и улучшения производительности.</p>
             
-            <div class="table-container">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Версия HTTP</th>
-                            <th>Год</th>
-                            <th>Транспорт</th>
-                            <th>Ключевые особенности</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>HTTP/0.9</strong></td>
-                            <td>1991</td>
-                            <td>TCP</td>
-                            <td>Только GET, HTML-ответы</td>
-                        </tr>
-                        <tr>
-                            <td><strong>HTTP/1.0</strong></td>
-                            <td>1996</td>
-                            <td>TCP</td>
-                            <td>Заголовки, методы GET/POST/HEAD</td>
-                        </tr>
-                        <tr>
-                            <td><strong>HTTP/1.1</strong></td>
-                            <td>1999</td>
-                            <td>TCP</td>
-                            <td>Постоянные соединения, кэширование</td>
-                        </tr>
-                        <tr>
-                            <td><strong>HTTP/2</strong></td>
-                            <td>2015</td>
-                            <td>TCP</td>
-                            <td>Мультиплексирование, Server Push</td>
-                        </tr>
-                        <tr>
-                            <td><strong>HTTP/3</strong></td>
-                            <td>2020</td>
-                            <td>QUIC/UDP</td>
-                            <td>Встроенное шифрование, меньше RTT</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="subsection">
+                <h3 class="subsection-title">Протокол QUIC</h3>
+                <p><strong>QUIC (Quick UDP Internet Connections)</strong> — протокол передачи данных, разработанный Google для обеспечения быстрой, надежной и безопасной передачи данных в сети. Представляет собой эволюцию TCP.</p>
+                
+                <div class="tcp-udp-comparison" style="margin-top: 2rem;">
+                    <div class="protocol-card" style="border-top-color: #3b82f6;">
+                        <div class="protocol-header">
+                            <div class="protocol-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <div class="protocol-name">TCP + TLS</div>
+                        </div>
+                        <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--gray);">
+                            <li>Несколько RTT для установления соединения</li>
+                            <li>Блокировка head-of-line</li>
+                            <li>Отдельные протоколы TCP и TLS</li>
+                            <li>Проблемы при смене сети</li>
+                            <li>Уязвимость к атакам</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="protocol-card" style="border-top-color: #8b5cf6;">
+                        <div class="protocol-header">
+                            <div class="protocol-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="protocol-name">QUIC</div>
+                        </div>
+                        <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--gray);">
+                            <li>0-1 RTT для установления соединения</li>
+                            <li>Нет блокировки head-of-line</li>
+                            <li>Встроенное шифрование TLS 1.3</li>
+                            <li>Устойчивость к смене сети</li>
+                            <li>Встроенная защита от атак</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             
-            <div class="protocol-list">
-                <div class="protocol-item">
-                    <div class="protocol-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="protocol-name">Встроенное шифрование</div>
-                    <div class="layer-desc">TLS 1.3 интегрирован в QUIC на уровне протокола</div>
+            <div class="subsection">
+                <h3 class="subsection-title">Ключевые особенности QUIC</h3>
+                
+                <div class="certificate-types">
+                    <div class="certificate-card" style="border-color: rgba(59, 130, 246, 0.3);">
+                        <div class="certificate-header">
+                            <div class="certificate-icon" style="background: #3b82f6;"><i class="fas fa-shipping-fast"></i></div>
+                            <div>
+                                <h4>Работает поверх UDP</h4>
+                            </div>
+                        </div>
+                        <p>Уменьшает задержки и ускоряет установление новых соединений. UDP не требует установления соединения как TCP и обеспечивает более гибкую передачу данных.</p>
+                    </div>
+                    
+                    <div class="certificate-card" style="border-color: rgba(139, 92, 246, 0.3);">
+                        <div class="certificate-header">
+                            <div class="certificate-icon" style="background: #8b5cf6;"><i class="fas fa-key"></i></div>
+                            <div>
+                                <h4>Встроенное шифрование</h4>
+                            </div>
+                        </div>
+                        <p>Включает шифрование на уровне протокола, что делает его более безопасным и защищенным от атак, таких как перехват и подмена данных.</p>
+                    </div>
+                    
+                    <div class="certificate-card" style="border-color: rgba(245, 158, 11, 0.3);">
+                        <div class="certificate-header">
+                            <div class="certificate-icon" style="background: #f59e0b;"><i class="fas fa-stream"></i></div>
+                            <div>
+                                <h4>Мультиплексирование</h4>
+                            </div>
+                        </div>
+                        <p>Поддерживает мультиплексирование нескольких потоков данных в одном соединении, что позволяет эффективно использовать пропускную способность сети.</p>
+                    </div>
                 </div>
-                <div class="protocol-item">
-                    <div class="protocol-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    <div class="protocol-name">Меньше задержек</div>
-                    <div class="layer-desc">0-RTT для повторных соединений</div>
+            </div>
+            
+            <div class="diagram">
+                <div class="diagram-title"><i class="fas fa-project-diagram"></i> Сравнение HTTP/2 и HTTP/3</div>
+                <div class="protocol-flow">
+                    <div class="client">
+                        <h3>HTTP/2 (TCP)</h3>
+                        <div class="flow-step" style="font-size: 0.85rem;">
+                            <strong>TCP рукопожатие</strong><br>
+                            <small>1 RTT</small>
+                        </div>
+                        <div class="flow-step" style="font-size: 0.85rem;">
+                            <strong>TLS рукопожатие</strong><br>
+                            <small>2 RTT</small>
+                        </div>
+                        <div class="flow-step" style="font-size: 0.85rem;">
+                            <strong>HTTP данные</strong><br>
+                            <small>Блокировка HOL</small>
+                        </div>
+                        <div style="margin-top: 1rem; color: var(--gray); font-size: 0.9rem;">
+                            <strong>Всего: 3 RTT</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="flow-arrow"></div>
+                    
+                    <div class="client">
+                        <h3>HTTP/3 (QUIC)</h3>
+                        <div class="flow-step" style="font-size: 0.85rem;">
+                            <strong>QUIC рукопожатие</strong><br>
+                            <small>1 RTT (0 RTT при повторе)</small>
+                        </div>
+                        <div class="flow-step" style="font-size: 0.85rem;">
+                            <strong>Встроенный TLS 1.3</strong><br>
+                            <small>Часть рукопожатия</small>
+                        </div>
+                        <div class="flow-step" style="font-size: 0.85rem;">
+                            <strong>HTTP данные</strong><br>
+                            <small>Без блокировки HOL</small>
+                        </div>
+                        <div style="margin-top: 1rem; color: var(--gray); font-size: 0.9rem;">
+                            <strong>Всего: 1 RTT (0 RTT)</strong>
+                        </div>
+                    </div>
                 </div>
-                <div class="protocol-item">
-                    <div class="protocol-icon"><i class="fas fa-stream"></i></div>
-                    <div class="protocol-name">Мультиплексирование</div>
-                    <div class="layer-desc">Несколько потоков без блокировки</div>
-                </div>
-                <div class="protocol-item">
-                    <div class="protocol-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <div class="protocol-name">Устойчивость</div>
-                    <div class="layer-desc">Лучшая работа при смене сети (Wi-Fi → 4G)</div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Преимущества HTTP/3</h3>
+                <div class="table-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Параметр</th>
+                                <th>HTTP/2</th>
+                                <th>HTTP/3</th>
+                                <th>Выигрыш</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Транспортный протокол</strong></td>
+                                <td>TCP</td>
+                                <td>QUIC поверх UDP</td>
+                                <td>Устранение блокировки head-of-line</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Время установления</strong></td>
+                                <td>3 RTT (TCP + TLS)</td>
+                                <td>1 RTT (0 для повторных)</td>
+                                <td>В 3 раза быстрее</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Шифрование</strong></td>
+                                <td>Отдельный TLS поверх TCP</td>
+                                <td>Встроенное TLS 1.3 в QUIC</td>
+                                <td>Более безопасно, меньше накладных</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Устойчивость к смене сети</strong></td>
+                                <td>Соединение разрывается</td>
+                                <td>Соединение сохраняется</td>
+                                <td>Непрерывность при Wi-Fi → 4G</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Мультиплексирование</strong></td>
+                                <td>Есть, но с блокировкой</td>
+                                <td>Полное, без блокировки</td>
+                                <td>Лучшая производительность</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
         
         <footer class="footer">
             <div class="footer-links">
-                <a href="https://tools.ietf.org/html/rfc9110" target="_blank" class="footer-link">RFC 9110</a>
-                <a href="https://tools.ietf.org/html/rfc9112" target="_blank" class="footer-link">RFC 9112</a>
-                <a href="https://datatracker.ietf.org/doc/html/rfc2818" target="_blank" class="footer-link">RFC 2818</a>
-                <a href="https://www.rfc-editor.org/rfc/rfc5246" target="_blank" class="footer-link">RFC 5246</a>
+                <a href="https://tools.ietf.org/html/rfc9110" target="_blank" class="footer-link">RFC 9110 (HTTP Semantics)</a>
+                <a href="https://tools.ietf.org/html/rfc9112" target="_blank" class="footer-link">RFC 9112 (HTTP/1.1)</a>
+                <a href="https://datatracker.ietf.org/doc/html/rfc2818" target="_blank" class="footer-link">RFC 2818 (HTTPS)</a>
+                <a href="https://www.rfc-editor.org/rfc/rfc5246" target="_blank" class="footer-link">RFC 5246 (TLS 1.2)</a>
+                <a href="https://datatracker.ietf.org/doc/html/rfc9000" target="_blank" class="footer-link">RFC 9000 (QUIC)</a>
             </div>
-            <p>© 2024 Исследование сетевых протоколов | Проект по HTTP/S протоколам</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--gray);">Сайт размещён на GitHub Pages</p>
+            <p>© 2024 Исследование сетевых протоколов | Полный проект по HTTP/S протоколам</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--gray);">Сайт размещён на GitHub Pages | Вся информация из предоставленных материалов</p>
+            <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--gray);">
+                Развитие сетевых протоколов идёт в сторону увеличения скорости, надёжности и безопасности. 
+                Современные стандарты, такие как HTTP/3 и TLS, стали ответом на требования времени. 
+                Понимание этих технологий необходимо в современном мире.
+            </p>
         </footer>
     </div>
 
@@ -787,7 +1532,9 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, 100);
                 }
             });
         }, observerOptions);
@@ -806,6 +1553,39 @@
                 layer.style.opacity = '0';
                 layer.style.transform = 'translateY(20px)';
                 layer.style.transition = 'all 0.5s ease';
+            });
+            
+            // Анимация карточек сертификатов
+            const certCards = document.querySelectorAll('.certificate-card');
+            certCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 150);
+                
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+            });
+        });
+        
+        // Подсветка активной секции при прокрутке
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    const sectionId = section.id;
+                    tabs.forEach(tab => {
+                        tab.classList.remove('active');
+                        if (tab.getAttribute('data-target') === sectionId) {
+                            tab.classList.add('active');
+                        }
+                    });
+                }
             });
         });
     </script>
