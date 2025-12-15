@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваше Имя | Портфолио</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        /* Базовые стили - можно потом вынести в отдельный файл */
+        :root {
+            --primary: #4f46e5;    /* Индиго */
+            --secondary: #10b981;  /* Изумрудный */
+            --dark: #1f2937;       /* Тёмно-серый */
+            --light: #f9fafb;      /* Светлый фон */
+            --text: #374151;       /* Основной текст */
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 2rem auto;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            color: var(--dark);
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill-tag {
+            background: var(--light);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            color: var(--text);
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .social-links a {
+            color: var(--text);
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1.2rem; }
+            section { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="avatar">
+            <i class="fas fa-user"></i> <!-- Замените на свою фотографию -->
+        </div>
+        <h1>Ваше Имя</h1>
+        <p class="subtitle">Веб-разработчик / Дизайнер / Специалист</p>
+        <div>
+            <a href="#projects" class="btn">Мои проекты</a>
+            <a href="#contact" class="btn btn-outline">Связаться</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>Обо мне</h2>
+        <p>Привет! Я разработчик с passion к созданию красивых и функциональных веб-приложений. Увлекаюсь современными технологиями, чистым кодом и user experience.</p>
+        <p>В свободное время изучаю новые фреймворки, contributing в open-source проекты и веду технический блог.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Мои проекты</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Личный сайт-портфолио</h3>
+                <p>Современный адаптивный сайт на HTML, CSS и JavaScript. Включает тёмную тему, анимации и оптимизацию для мобильных устройств.</p>
+                <div class="skills">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>Приложение для управления задачами</h3>
+                <p>Веб-приложение с возможностью создания, редактирования и категоризации задач. Реализовано с использованием React и LocalStorage.</p>
+                <div class="skills">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">CSS Modules</span>
+                    <span class="skill-tag">LocalStorage</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>API для сервиса блогов</h3>
+                <p>Backend-часть для блоговой платформы с аутентификацией пользователей, комментариями и возможностью загрузки изображений.</p>
+                <div class="skills">
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express</span>
+                    <span class="skill-tag">MongoDB</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Мои навыки</h2>
+        <div class="skills">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Связаться со мной</h2>
+        <p>Вы можете найти меня в соцсетях или отправить email:</p>
+        <div class="social-links">
+            <a href="https://github.com/wenen402" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:ваш-email@example.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2023 Ваше Имя. Все права защищены.</p>
+        <p>Сайт размещён на <a href="https://pages.github.com/">GitHub Pages</a></p>
+    </footer>
+
+    <script>
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Динамическое обновление года в футере
+        document.querySelector('footer p').innerHTML = `© ${new Date().getFullYear()} Ваше Имя. Все права защищены.`;
+    </script>
+</body>
+</html>
